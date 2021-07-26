@@ -1,0 +1,79 @@
+.input__container {
+  width: 100%;
+  height: 100%;
+  color: #ddd;
+  position: relative;
+}
+
+.input__container input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+.input__container input[type='date']::-webkit-datetime-edit {
+  color: #ddd;
+}
+
+.input__container input:focus + .input__label .input__placeholder {
+  transform: translateY(-100%);
+  font-size: 14px;
+  color: var(--color-primary);
+}
+
+/* shrink inputs */
+
+.input__label[input-has-value='yes'] > span,
+.input__label[type='date'] > span,
+.input__label[type='datetime'] > span {
+  transform: translateY(-100%);
+  font-size: 14px;
+}
+
+.input__label {
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 100%;
+  text-align: start;
+  pointer-events: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.input__label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid var(--color-primary);
+  transform: scaleX(0);
+  transition: transform 200ms ease-in;
+}
+
+.input__container input:focus + .input__label::after {
+  transform: scaleX(100%);
+}
+
+.input__placeholder {
+  position: absolute;
+  bottom: 3px;
+  transition: all 100ms ease-in;
+}
+
+.input__helper-text {
+  position: absolute;
+  bottom: -100%;
+  font-size: 0.7rem;
+}
+
+.input__container[type='error'] > .input__helper-text,
+.input__container[type='error'] input:focus + .input__label .input__placeholder,
+.input__container[type='error'] {
+  color: red;
+}
+.input__container[type='error'] > .input__label::after,
+.input__container[type='error'] > .input__label {
+  border-bottom: 1px solid red;
+}

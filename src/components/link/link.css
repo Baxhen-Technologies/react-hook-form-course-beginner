@@ -1,0 +1,9 @@
+.link {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  display: inline-block;
+  text-align: start;
+  height: fit-content;
+  width: fit-content;
+}

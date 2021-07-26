@@ -1,0 +1,23 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.fields__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 2.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.form__title {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+*[type='submit'] {
+  grid-column: auto/-1;
+}
