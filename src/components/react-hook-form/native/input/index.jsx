@@ -11,7 +11,7 @@ export function Input({
   rules,
   control,
   name,
-  placeholder,
+  label,
   helperText = '',
   getValues,
   ...rest
@@ -50,7 +50,7 @@ export function Input({
           input-has-value="no"
           type={rest.type}
         >
-          <span className="input__placeholder">{placeholder}</span>
+          <span className="input__placeholder">{label}</span>
         </label>
         <div className="input__helper-text">
           {get(errors, name)?.message || helperText}

@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #61dafb;
-  --color-primary-button-hover: rgb(96, 217, 251, 0.1);
+  --color-primary: #3f51b5;
+  --color-primary-button-hover: rgb(63, 81, 181, 0.1);
 }
 
 .App {
@@ -10,19 +10,4 @@
   text-align: center;
   height: 100vh;
   width: 100vw;
-}
-
-.container {
-  margin: auto;
-  height: fit-content;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 700px) {
-  .container {
-    width: 50%;
-  }
 }
