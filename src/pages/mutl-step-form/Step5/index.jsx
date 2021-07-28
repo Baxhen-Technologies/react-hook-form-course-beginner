@@ -10,7 +10,7 @@ function Step5({ history }) {
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(updateRegisterForm(data));
-    history.push('/result');
+    history.push('/multi-steps/result');
   };
 
   const registerForm = useSelector((state) => state.form.registerForm);
@@ -46,7 +46,10 @@ function Step5({ history }) {
           }}
         />
 
-        <Button onClick={() => history.push('/step4')} label="Anterior" />
+        <Button
+          onClick={() => history.push('/multi-steps/step4')}
+          label="Anterior"
+        />
         <Button type="submit" label="Próximo" />
       </Form>
     </div>

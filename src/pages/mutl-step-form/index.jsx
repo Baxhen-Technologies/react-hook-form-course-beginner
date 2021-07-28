@@ -15,12 +15,15 @@ function MultiStepForm() {
     <div className="container__multi-step">
       {show && <h1 className="multi-step__title">Cadastro Multi Steps</h1>}
       <Switch>
-        <Route exact path="/" component={Step1} />
-        <Route path="/step2" component={Step2} />
-        <Route path="/step3" component={Step3} />
-        <Route path="/step4" component={Step4} />
-        <Route path="/step5" component={Step5} />
-        <Route path="/result" component={() => <Result setShow={setShow} />} />
+        <Route exact path="/multi-steps" component={Step1} />
+        <Route path="/multi-steps/step2" component={Step2} />
+        <Route path="/multi-steps/step3" component={Step3} />
+        <Route path="/multi-steps/step4" component={Step4} />
+        <Route path="/multi-steps/step5" component={Step5} />
+        <Route
+          path="/multi-steps/result"
+          component={() => <Result setShow={setShow} />}
+        />
       </Switch>
     </div>
   );

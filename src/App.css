@@ -3,11 +3,33 @@
   --color-primary-button-hover: rgb(63, 81, 181, 0.1);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+}
+
+.nav {
+  height: 10vh;
+}
+
+.nav__container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.link__tag {
+  text-decoration: none;
+  color: var(--color-primary);
 }

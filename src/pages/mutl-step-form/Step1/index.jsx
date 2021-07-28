@@ -11,7 +11,7 @@ function Step1({ history }) {
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(updateRegisterForm(data));
-    history.push('/step2');
+    history.push('/multi-steps/step2');
   };
 
   const registerForm = useSelector((state) => state.form.registerForm);
