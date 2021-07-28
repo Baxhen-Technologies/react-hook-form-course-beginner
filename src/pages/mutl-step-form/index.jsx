@@ -10,7 +10,7 @@ import Step5 from './Step5';
 import Result from './Result';
 
 function MultiStepForm() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   return (
     <div className="container__multi-step">
       {show && <h1 className="multi-step__title">Cadastro Multi Steps</h1>}
