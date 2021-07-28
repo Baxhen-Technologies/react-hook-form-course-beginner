@@ -1,0 +1,24 @@
+.result {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.result__card {
+  height: max-content;
+  width: max-content;
+  padding: 5rem 2.5rem;
+  border: 1px solid var(--color-primary);
+}
+
+.result__title {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 400;
+}
+.result__subtitle {
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 300;
+}
