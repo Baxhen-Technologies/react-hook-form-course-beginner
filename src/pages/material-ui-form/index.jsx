@@ -60,8 +60,13 @@ function MaterialForm() {
           type="password"
           rules={{
             required: 'Campo Obrigatório',
-            validate: (value, { senha }) => {
-              return value === senha || 'Senha não confere';
+            validate: {
+              confirm: (value, { senha }) => {
+                return value === senha || 'Senha não confere';
+              },
+              too_short: (value) => {
+                return value.length > 8 || 'Senha muito curta';
+              },
             },
           }}
         />
