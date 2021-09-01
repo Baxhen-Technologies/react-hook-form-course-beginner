@@ -33,6 +33,7 @@ export function TextInput({
           onChange={(e) =>
             transform ? transform.output(e, field.onChange) : field.onChange(e)
           }
+          style={{width:'100%'}}
           helperText={get(errors, name)?.message || helperText}
           error={Boolean(get(errors, name))}
         />

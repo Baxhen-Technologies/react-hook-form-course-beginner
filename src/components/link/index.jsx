@@ -1,9 +1,10 @@
-import React from 'react';
-import './link.css';
+import React from "react";
+import clsx from "clsx";
+import "./link.css";
 
-const Link = ({ children, ...rest }) => {
+const Link = ({ children, className, ...rest }) => {
   return (
-    <a className="link" {...rest}>
+    <a className={clsx("link", { [className]: Boolean(className) })} {...rest}>
       {children}
     </a>
   );

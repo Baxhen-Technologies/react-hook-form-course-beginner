@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import NativeForm from './pages/native-form';
 import MaterialForm from './pages/material-ui-form';
-import MultiStepForm from './pages/mutl-step-form';
+import MultiStepForm from './pages/multi-step-form';
 import { store } from './store';
 import Home from './pages/home';
 import { Link } from 'react-router-dom';

@@ -33,6 +33,7 @@ export function PasswordInput({
         ...rules,
         validate: customFunctionValidate(rules, getValues),
       })}
+      style={{width:'100%'}}
       helperText={get(errors, name)?.message || helperText}
       error={Boolean(get(errors, name))}
       InputProps={{

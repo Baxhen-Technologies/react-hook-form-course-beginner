@@ -1,7 +1,7 @@
 import './styles.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Form from '../../../components/react-hook-form/form';
+import Form from '../../../components/react-hook-form/native';
 import Button from '../../../components/button';
 import { MaterialInput } from '../../../components/react-hook-form/material-ui/input';
 import { updateRegisterForm } from '../../../store/forms/actions';

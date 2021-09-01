@@ -32,7 +32,7 @@ export function MaterialSelect({
         validate: customFunctionValidate(rules, getValues),
       }}
       render={({ field, formState: { errors } }) => (
-        <FormControl error={Boolean(get(errors, name))}>
+        <FormControl style={{width:'100%'}} error={Boolean(get(errors, name))}>
           <InputLabel id="select-label">{label}</InputLabel>
           <Select labelId="select-label" id="select" defaultValue="" {...field}>
             <MenuItem value="">

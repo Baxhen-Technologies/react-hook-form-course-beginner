@@ -1,6 +1,6 @@
 import './styles.css';
-import Form from '../../components/react-hook-form/form';
-import { Input } from '../../components/react-hook-form/native';
+import Form from '../../components/react-hook-form/native';
+import { Input } from '../../components/react-hook-form/native/input';
 import Button from '../../components/button';
 import { emailRegex } from '../../utils';
 import Link from '../../components/link';
