@@ -1,9 +1,9 @@
-import React from 'react';
-import { TextField } from '@material-ui/core';
-import { get } from 'lodash';
+import React from "react";
+import { TextField } from "@material-ui/core";
+import { get } from "lodash";
 
-import { customFunctionValidate } from '../../../../../utils';
-import { Controller } from 'react-hook-form';
+import { customFunctionValidate } from "../../../../../utils";
+import { Controller } from "react-hook-form";
 
 export function TextInput({
   register,
@@ -12,7 +12,7 @@ export function TextInput({
   getValues,
   helperText,
   control,
-  defaultValue = '',
+  defaultValue = "",
   transform,
   ...rest
 }) {
@@ -33,7 +33,7 @@ export function TextInput({
           onChange={(e) =>
             transform ? transform.output(e, field.onChange) : field.onChange(e)
           }
-          style={{width:'100%'}}
+          style={{ width: "100%" }}
           helperText={get(errors, name)?.message || helperText}
           error={Boolean(get(errors, name))}
         />

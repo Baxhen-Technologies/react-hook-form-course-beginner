@@ -39,7 +39,6 @@ function MaterialForm() {
       name: "idade",
       label: "Idade",
       rules: { required: "Campo Obrigatório" },
-      type: "number",
       transform: intInputTransform,
     },
     {
@@ -108,8 +107,8 @@ function MaterialForm() {
     {
       ...defaultMedia(),
       Component: MaterialRadioButtonGroup,
-      name: "idade",
-      label: "Idade",
+      name: "maioridade",
+      label: "Maioridade",
       rules: {
         required: "Campo Obrigatório",
       },

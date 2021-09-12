@@ -1,6 +1,8 @@
-export const emailRegex =
-  /(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[A-Za-z0-9-]*[A-Za-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-
+/* eslint-disable */
+export const emailRegex = new RegExp(
+  /(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[A-Za-z0-9-]*[A-Za-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+);
+/* eslint-enable */
 export const validatePlus = (v, validate, getValues) => {
   return validate(v, getValues());
 };
@@ -28,10 +30,10 @@ export const intInputTransform = {
     return isNaN(value) || value === 0 ? "" : value.toString();
   },
   output: (e, onChange) => {
-    const onlyNumber = /^\d+$/;
-    const value = e.target.value;
-    if (onlyNumber.test(value)) {
-      console.log("here");
+    const dotComma = new RegExp(/[,.]/);
+    const value = Number(e.target.value);
+
+    if (isNaN(value) || dotComma.test(e.target.value)) {
       return;
     }
     const output = parseInt(e.target.value, 10);
@@ -40,39 +42,44 @@ export const intInputTransform = {
     onChange(v);
   },
 };
+const moneyFormatter = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+});
 export const moneyInputTransform = {
   input: (value) => {
     if (isNaN(value) || !value) return "";
 
-    let v = value.toFixed(2);
-
-    v = v.replace(/(\D)/, "");
-    v = v.replace(/(\d)(\d{2})$/, "$1,$2");
-    v = v.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    const v = moneyFormatter.format(value);
 
     return v;
   },
   output: (e, onChange) => {
-    //* formatar para o numero
-
-    var reg = new RegExp(/^[0-9]*$/gm);
-
     let value = e.target.value;
-    value = value.replaceAll(".", "");
-    value = value.replaceAll(",", "");
 
-    if (!reg.test(value)) return;
+    if (value.includes("R$ ")) {
+      const stringNumberNoDot = value
+        .split("R$ ")[1]
+        .replace(",", "")
+        .replaceAll(".", "");
 
-    if (value.length <= 2) {
-      value = `0.${value}`;
-    } else {
-      value = value.replace(/(\d)(\d{2})$/, "$1.$2");
+      if (isNaN(Number(stringNumberNoDot)) || stringNumberNoDot.includes("e"))
+        return;
+
+      const stringNumberWithDot = `${stringNumberNoDot.substring(
+        0,
+        stringNumberNoDot.length - 2
+      )}.${stringNumberNoDot.substring(
+        stringNumberNoDot.length - 2,
+        stringNumberNoDot.length
+      )}`;
+
+      const v = Number(stringNumberWithDot);
+      onChange(v);
+
+      return;
     }
-
-    const output = Number(value);
-
-    const v = isNaN(output) ? "" : output;
-
-    onChange(v);
+    if (isNaN(Number(value)) || value.includes("e")) return;
+    onChange(value);
   },
 };
