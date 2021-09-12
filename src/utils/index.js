@@ -7,7 +7,7 @@ export const validatePlus = (v, validate, getValues) => {
 
 export const customFunctionValidate = (rules, getValues) => {
   if (rules?.validate) {
-    if (typeof rules.validate === 'function') {
+    if (typeof rules.validate === "function") {
       return (value) => validatePlus(value, rules.validate, getValues);
     }
     const keys = Object.keys(rules.validate);
@@ -25,26 +25,30 @@ export const customFunctionValidate = (rules, getValues) => {
 
 export const intInputTransform = {
   input: (value) => {
-    //* deve sempre retornar string
-    return isNaN(value) || value === 0 ? '' : value.toString();
+    return isNaN(value) || value === 0 ? "" : value.toString();
   },
   output: (e, onChange) => {
-    //* formatar para o numero inteiro
+    const onlyNumber = /^\d+$/;
+    const value = e.target.value;
+    if (onlyNumber.test(value)) {
+      console.log("here");
+      return;
+    }
     const output = parseInt(e.target.value, 10);
-    const v = isNaN(output) ? '' : output;
+    const v = isNaN(output) ? "" : output;
 
     onChange(v);
   },
 };
 export const moneyInputTransform = {
   input: (value) => {
-    if (isNaN(value) || !value) return '';
+    if (isNaN(value) || !value) return "";
 
     let v = value.toFixed(2);
 
-    v = v.replace(/(\D)/, '');
-    v = v.replace(/(\d)(\d{2})$/, '$1,$2');
-    v = v.replace(/(?=(\d{3})+(\D))\B/g, '.');
+    v = v.replace(/(\D)/, "");
+    v = v.replace(/(\d)(\d{2})$/, "$1,$2");
+    v = v.replace(/(?=(\d{3})+(\D))\B/g, ".");
 
     return v;
   },
@@ -54,20 +58,20 @@ export const moneyInputTransform = {
     var reg = new RegExp(/^[0-9]*$/gm);
 
     let value = e.target.value;
-    value = value.replaceAll('.', '');
-    value = value.replaceAll(',', '');
+    value = value.replaceAll(".", "");
+    value = value.replaceAll(",", "");
 
     if (!reg.test(value)) return;
 
     if (value.length <= 2) {
       value = `0.${value}`;
     } else {
-      value = value.replace(/(\d)(\d{2})$/, '$1.$2');
+      value = value.replace(/(\d)(\d{2})$/, "$1.$2");
     }
 
     const output = Number(value);
 
-    const v = isNaN(output) ? '' : output;
+    const v = isNaN(output) ? "" : output;
 
     onChange(v);
   },
