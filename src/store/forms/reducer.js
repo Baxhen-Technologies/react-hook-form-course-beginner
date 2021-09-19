@@ -1,5 +1,5 @@
-import { produce } from 'immer';
-import { ActionTypes } from '../action-types';
+import { produce } from "immer";
+import { ActionTypes } from "../action-types";
 
 const initialState = {
   registerForm: {},
@@ -13,6 +13,11 @@ export const form = produce((draft, action) => {
         ...draft[formName],
         ...data,
       };
+      break;
+    }
+    case ActionTypes.clearForm: {
+      const { formName } = action.payload;
+      draft[formName] = {};
       break;
     }
     default:

@@ -13,15 +13,21 @@ export default function Form({
   className,
   title,
   spacing = 5,
+  // effect = { fn: () => {}, deps: [] },
 }) {
   const methods = useForm({ defaultValues, mode: "onBlur" });
   const { handleSubmit } = methods;
+  // const { fn, deps } = effect;
 
   const classes = useStyles();
 
+  // React.useEffect(() => {
+  //   fn(methods);
+  // }, deps);
+
   return (
     <div className="form__container">
-      {title && <h1 className="form__title">{title}</h1>}
+      {title && <h1 className="title">{title}</h1>}
 
       <Grid
         container
@@ -38,7 +44,11 @@ export default function Form({
 
           const breakPoints = { md, sm, xs, lg, xl };
           return child.props?.name ? (
-            <Grid item {...breakPoints}>
+            <Grid
+              item
+              {...breakPoints}
+              className={clsx({ [classes.hidden]: hidden })}
+            >
               {React.createElement(child.type, {
                 ...{
                   ...child.props,

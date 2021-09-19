@@ -6,9 +6,3 @@
   align-items: center;
   justify-content: center;
 }
-
-@media (min-width: 700px) {
-  .container {
-    width: 50%;
-  }
-}

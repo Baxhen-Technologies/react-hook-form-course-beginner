@@ -1,9 +1,10 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 import { get } from "lodash";
+import { Controller } from "react-hook-form";
 
 import { customFunctionValidate } from "../../../../../utils";
-import { Controller } from "react-hook-form";
+import useStyles from "./styles";
 
 export function TextInput({
   register,
@@ -16,6 +17,7 @@ export function TextInput({
   transform,
   ...rest
 }) {
+  const classes = useStyles();
   return (
     <Controller
       defaultValue={defaultValue}
@@ -30,6 +32,7 @@ export function TextInput({
           {...rest}
           {...field}
           value={transform ? transform.input(field.value) : field.value}
+          classes={{ root: classes.helperText }}
           onChange={(e) =>
             transform ? transform.output(e, field.onChange) : field.onChange(e)
           }

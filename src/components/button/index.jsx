@@ -1,9 +1,14 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import clsx from "clsx";
 
-const Button = ({ label, ...rest }) => {
+import "./button.css";
+
+const Button = ({ label, className, ...rest }) => {
   return (
-    <button className="btn" {...rest}>
+    <button
+      className={clsx("btn", { [className]: Boolean(className) })}
+      {...rest}
+    >
       {label}
     </button>
   );

@@ -1,3 +1,4 @@
 export const ActionTypes = {
-  updateForm: 'updateForm',
+  updateForm: "updateForm",
+  clearForm: "clearForm",
 };

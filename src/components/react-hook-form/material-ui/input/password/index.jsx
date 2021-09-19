@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { get } from 'lodash';
+import React, { useState } from "react";
+import { get } from "lodash";
 
-import { TextField, InputAdornment, IconButton } from '@material-ui/core';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { TextField, InputAdornment, IconButton } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { customFunctionValidate } from '../../../../../utils';
+import { customFunctionValidate } from "../../../../../utils";
+import useStyles from "./styles";
 
 export function PasswordInput({
   register,
@@ -16,6 +17,8 @@ export function PasswordInput({
   helperText,
   ...rest
 }) {
+  const classes = useStyles();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -33,7 +36,8 @@ export function PasswordInput({
         ...rules,
         validate: customFunctionValidate(rules, getValues),
       })}
-      style={{width:'100%'}}
+      style={{ width: "100%" }}
+      classes={{ root: classes.helperText }}
       helperText={get(errors, name)?.message || helperText}
       error={Boolean(get(errors, name))}
       InputProps={{
@@ -50,7 +54,7 @@ export function PasswordInput({
           </InputAdornment>
         ),
       }}
-      type={showPassword ? 'text' : 'password'}
+      type={showPassword ? "text" : "password"}
     />
   );
 }

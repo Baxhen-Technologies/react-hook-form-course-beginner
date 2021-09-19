@@ -9,7 +9,7 @@ import Link from "../../components/link";
 import { MaterialInput } from "../../components/react-hook-form/material-ui/input";
 import { MaterialSelect } from "../../components/react-hook-form/material-ui/select";
 import { MaterialRadioButtonGroup } from "../../components/react-hook-form/material-ui/radio-button-group";
-import DivSpace from "../../components/react-hook-form/material-ui/div-space";
+import DivSpace from "../../components/react-hook-form/div-space";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import useStyles from "./styles";
 
@@ -19,22 +19,20 @@ function MaterialForm() {
 
   const downSm = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const defaultMedia = () => {
-    return { md: 6, xs: 12 };
-  };
+  const defaultMedia = { xl: 6, lg: 6, md: 6, sm: 12, xs: 12 };
 
   const onSubmit = (data) => console.log(data);
 
   const fields = [
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "nome",
       label: "Nome",
       rules: { required: "Campo Obrigatório" },
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "idade",
       label: "Idade",
@@ -42,7 +40,7 @@ function MaterialForm() {
       transform: intInputTransform,
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "patrimonio",
       label: "Patrimônio",
@@ -50,7 +48,7 @@ function MaterialForm() {
       transform: moneyInputTransform,
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "email",
       label: "Email",
@@ -60,7 +58,7 @@ function MaterialForm() {
       },
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "senha",
       label: "Senha",
@@ -74,7 +72,7 @@ function MaterialForm() {
       type: "password",
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialInput,
       name: "senha_confirmacao",
       label: "Confirmação de Senha",
@@ -92,7 +90,7 @@ function MaterialForm() {
       type: "password",
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialSelect,
       name: "sexo",
       label: "Sexo",
@@ -105,7 +103,7 @@ function MaterialForm() {
       ],
     },
     {
-      ...defaultMedia(),
+      ...defaultMedia,
       Component: MaterialRadioButtonGroup,
       name: "maioridade",
       label: "Maioridade",
@@ -120,7 +118,7 @@ function MaterialForm() {
     },
   ];
   return (
-    <div className="container">
+    <div className={classes.root}>
       <Form onSubmit={onSubmit} title="Cadastro">
         {fields.map(({ Component, ...field }) => (
           <Component key={field.name} {...field} />

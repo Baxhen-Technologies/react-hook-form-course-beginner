@@ -1,14 +1,9 @@
-.container {
-  margin: auto;
-  height: fit-content;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.register__container {
+  width: 50%;
 }
-
-@media (min-width: 700px) {
-  .container {
-    width: 50%;
-  }
+.register__forgot_password_link {
+  text-align: start;
+}
+.register__submit_btn {
+  width: 100%;
 }
